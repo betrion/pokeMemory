@@ -7,7 +7,7 @@ const Card = ({ pokemon }) => {
         src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png"
         alt="poke"
       ></img>
-      <h3>Charizard</h3>
+      <h5>Charizard</h5>
     </CardWrapper>
   );
 };

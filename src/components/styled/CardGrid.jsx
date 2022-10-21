@@ -1,31 +1,17 @@
 import styled from "styled-components";
-import Card from "./Card.style";
 
-export const CardGrid = () => {
-  return (
-    <CardGridWrapper>
-      <Card />
-      <Card /> <Card /> <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-    </CardGridWrapper>
-  );
-};
+// export const CardGrid = () => {
+//   return <CardGridWrapper></CardGridWrapper>;
+// };
 
-const CardGridWrapper = styled.div`
+export const CardGrid = styled.div`
   display: grid;
   width: 70vw;
   box-sizing: border-box;
-  outline: 1px solid red;
-  /* margin-left: auto; */
-  /* margin-right: auto; */
-  margin: auto;
+  /* border: 1px solid red; */
+  margin-left: auto;
+  margin-right: auto;
+  /* margin: auto; */
 
   grid-template-columns: repeat(4, 1fr);
 
