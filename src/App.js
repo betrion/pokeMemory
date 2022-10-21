@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { AppContainer } from "./components/styled/AppContainer.style";
 
+import GlobalStyle from "./components/styled/GlobalStyle.style";
+import { Circle, Navbar, NavPadding } from "./components/styled/Navbar.style";
+import pokeLogo from "./components/images/logo.png";
+import Main from "./components/Main";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContainer>
+      <GlobalStyle />
+      <Navbar>
+        <img src={pokeLogo} alt="pokemon memory game" />
+      </Navbar>
+      <NavPadding>
+        <Circle size="60px">
+          <Circle size="40px" />
+        </Circle>
+      </NavPadding>
+      <Main />
+    </AppContainer>
   );
 }
 
