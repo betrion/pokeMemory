@@ -11,7 +11,9 @@ import axios from "axios";
 function App() {
   const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(false);
-  const POKEMON_AMOUNT = 10;
+  const [clickedPokemons, setClickedPokemons] = useState([]);
+  const POKEMON_AMOUNT = 12;
+
   const getPokemons = async (amount) => {
     const pokimans = [];
     const startingPokemon = Math.floor(Math.random() * 155);
@@ -43,10 +45,14 @@ function App() {
   };
   useEffect(() => {
     const loadPokemons = async () => {
-      setPokemons(await getPokemons(POKEMON_AMOUNT));
+      setPokemons(shuffleArray(await getPokemons(POKEMON_AMOUNT)));
     };
     loadPokemons();
   }, []);
+
+  const shuffleArray = (array) => {
+    return array.sort(() => Math.random() - 0.5);
+  };
 
   return (
     <AppContainer>
@@ -58,10 +64,9 @@ function App() {
           <Circle size="40px" />
         </Circle>
       </NavPadding>
-      {/* <Spinner animation="border" variant="danger"></Spinner>
-      <Main props={pokemons} /> */}
+
       {loading ? (
-        <Main props={pokemons} />
+        <Main props={pokemons} setClickedPokemons={setClickedPokemons} />
       ) : (
         <Spinner animation="border" variant="danger"></Spinner>
       )}

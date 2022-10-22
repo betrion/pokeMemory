@@ -1,9 +1,17 @@
 import styled from "styled-components";
 
 const Card = (pokemon) => {
+  const handleClick = (e) => {
+    const clickedArray = [];
+    console.log(e.target);
+    const id = e.target.id;
+    const name = e.target.alt;
+    clickedArray.push({ id, name });
+    pokemon.setClickedPokemons((prev) => [...prev, ...clickedArray]);
+  };
   return (
-    <CardWrapper>
-      <img src={pokemon.pic} alt="poke" id={pokemon.id}></img>
+    <CardWrapper onClick={handleClick}>
+      <img src={pokemon.pic} alt={pokemon.name} id={pokemon.id}></img>
       <h6>{pokemon.name}</h6>
     </CardWrapper>
   );
@@ -20,7 +28,7 @@ const CardWrapper = styled.div`
 
   margin: 1rem;
   border: 2px solid gray;
-
+  min-width: 0;
   border-radius: 1rem;
   transition: all 0.3s;
   transition-timing-function: ease-in-out;
