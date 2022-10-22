@@ -13,13 +13,13 @@ export const CardGrid = styled.div`
   margin-right: auto;
   /* margin: auto; */
 
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
 
-  @media (max-width: 750px) {
-    grid-template-columns: repeat(3, 1fr);
+  @media (max-width: 770px) {
+    grid-template-columns: repeat(4, 1fr);
   }
   @media (max-width: 550px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
   @media (max-width: 350px) {
     grid-template-columns: repeat(1, 1fr);

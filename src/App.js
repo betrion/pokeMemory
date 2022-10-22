@@ -9,35 +9,47 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function App() {
-  const [pokemons, setPokemons] = useState(null);
+  const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(false);
-  const POKEMON_AMOUNT = 3;
+  const POKEMON_AMOUNT = 10;
   const getPokemons = async (amount) => {
-    const data = await axios
-      .get(`https://pokeapi.co/api/v2/pokemon/${amount}`)
-      .then((res) => {
-        console.log(res.data);
-        setPokemons((prev) => ({
-          ...prev,
-          pokemon: {
-            id: res.data.id,
-            pic: res.data.sprites.front_default,
-            name: res.data.name,
-          },
-        }));
-      })
-      .catch((e) => console.log("ERROR: invalid fetch url"));
+    const pokimans = [];
+    const startingPokemon = Math.floor(Math.random() * 155);
+    for (let i = 0; i < amount; i++) {
+      const data = await axios
+        .get(`https://pokeapi.co/api/v2/pokemon/${startingPokemon + i}`)
+        .then((res) => {
+          const id = res.data.id;
+          const name = res.data.name[0].toUpperCase() + res.data.name.slice(1);
+          const pic = res.data.sprites.front_default;
+          pokimans.push({ id, name, pic });
+          // setPokemons((prev) => ({
+          //   pokemons: [
+          //     ...prev.pokemons,
+
+          //     {
+          //       id: res.data.id,
+          //       pic: res.data.sprites.front_default,
+          //       name: res.data.name.toUpperCase(),
+          //     },
+          //   ],
+          // }));
+        })
+
+        .catch((e) => console.log("ERROR: invalid fetch url"));
+    }
     setLoading(true);
+    return pokimans;
   };
   useEffect(() => {
-    for (let i = 1; i <= POKEMON_AMOUNT; i++) {
-      getPokemons(i);
-    }
+    const loadPokemons = async () => {
+      setPokemons(await getPokemons(POKEMON_AMOUNT));
+    };
+    loadPokemons();
   }, []);
 
   return (
     <AppContainer>
-      {/* <GlobalStyle /> */}
       <Navbar>
         <img src={pokeLogo} alt="pokemon memory game" />
       </Navbar>
@@ -46,8 +58,13 @@ function App() {
           <Circle size="40px" />
         </Circle>
       </NavPadding>
-      <Spinner animation="border" variant="danger"></Spinner>
-      <Main {...pokemons} />
+      {/* <Spinner animation="border" variant="danger"></Spinner>
+      <Main props={pokemons} /> */}
+      {loading ? (
+        <Main props={pokemons} />
+      ) : (
+        <Spinner animation="border" variant="danger"></Spinner>
+      )}
     </AppContainer>
   );
 }
