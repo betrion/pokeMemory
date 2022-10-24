@@ -1,18 +1,18 @@
 import styled from "styled-components";
 
-const Card = (pokemon) => {
-  const handleClick = (e) => {
-    const clickedArray = [];
-    console.log(e.target);
-    const id = e.target.id;
-    const name = e.target.alt;
-    clickedArray.push({ id, name });
-    pokemon.setClickedPokemons((prev) => [...prev, ...clickedArray]);
-  };
+const Card = ({ pic, name, id, setClickedPokemons, handlePokemonClick }) => {
+  // const handleClick = (e) => {
+  //   const clickedArray = [];
+  //   console.log(e.target);
+  //   const id = e.target.id;
+  //   const name = e.target.alt;
+  //   clickedArray.push({ id, name });
+  //   setClickedPokemons((prev) => [...prev, ...clickedArray]);
+  // };
   return (
-    <CardWrapper onClick={handleClick}>
-      <img src={pokemon.pic} alt={pokemon.name} id={pokemon.id}></img>
-      <h6>{pokemon.name}</h6>
+    <CardWrapper onClick={handlePokemonClick}>
+      <img src={pic} alt={name} id={id}></img>
+      <h6>{name}</h6>
     </CardWrapper>
   );
 };
@@ -23,10 +23,11 @@ const CardWrapper = styled.div`
   justify-content: center;
   align-items: center;
   /* flex-basis: auto; */
-  width: 120px;
-  gap: 3rem;
+  width: 12vw;
+  gap: 1rem;
 
   margin: 1rem;
+  padding: 0 3rem;
   border: 2px solid gray;
   min-width: 0;
   border-radius: 1rem;
@@ -40,10 +41,11 @@ const CardWrapper = styled.div`
     background-color: #ef0e3d;
   }
   & img {
+    width: 9vw;
     border: 1px double gray;
     /* border-style: ; */
     border-radius: 5px;
-    margin: 12px;
+    margin: 1rem;
   }
 `;
 export default Card;

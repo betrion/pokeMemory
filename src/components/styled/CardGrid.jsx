@@ -10,8 +10,8 @@ export const CardGrid = styled.div`
   box-sizing: content-box;
   overflow-wrap: normal;
   /* border: 1px solid red; */
-  margin-left: auto;
-  margin-right: auto;
+  /* margin-left: auto;
+  margin-right: auto; */
 
   grid-template-columns: repeat(5, 1fr);
 

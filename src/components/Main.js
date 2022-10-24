@@ -1,14 +1,14 @@
 import { CardGrid } from "./styled/CardGrid";
 import Card from "./styled/Card.style";
 import "bootstrap/dist/css/bootstrap.min.css";
-const Main = (props) => {
-  const pokemonCards = props.props.map((pokemon) => (
+const Main = ({ pokemons, setClickedPokemons, handlePokemonClick }) => {
+  const pokemonCards = pokemons.map((pokemon) => (
     <Card
       key={Math.random()}
       name={pokemon.name}
       pic={pokemon.pic}
       id={pokemon.id}
-      setClickedPokemons={props.setClickedPokemons}
+      {...{ setClickedPokemons, handlePokemonClick }}
     />
   ));
   return (
