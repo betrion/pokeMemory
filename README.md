@@ -1,10 +1,10 @@
-# Getting Started with Create React App
+# Simple memory game using fetched Pokemon images
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Made to practice React and Styled Components.
 
-## Available Scripts
+## See it in deployed
 
-In the project directory, you can run:
+[Link to page](https://betrion.github.io/pokeMemory/)
 
 ### `npm start`
 
